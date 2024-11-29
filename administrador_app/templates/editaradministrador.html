@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+<div class="col-md-4 offset-md-4">
+    <!-- la tarjeta card -->
+    <div class="card"><!-- tarjeta -->
+        <div class="card-body"> 
+          <form action="/editarAdministrador/" method="POST"> {% csrf_token %}<!-- formulario -->
+            
+            <div class="form-group">
+              <input type="number" id="txtcodigo" name="txtcodigo" class="form-control"
+              value="{{misadministradores.id_admin}}"  required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+              value="{{misadministradores.nombre}}"  maxLength="100" required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="text" id="txtapellidos" name="txtapellidos" class="form-control"
+              value="{{misadministradores.apellidos}}"  maxLength="100" required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="text" id="txtemail" name="txtemail" class="form-control"
+              value="{{misadministradores.email}}"  maxLength="50" required >
+            </div>
+
+            <div class="form-group py-2">
+              <input type="input" id="numtelefono" name="numtelefono" class="form-control"
+              value="{{misadministradores.telefono}}" min="0000000000" max="9999999999" required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="text" id="txtdireccion" name="txtdireccion" class="form-control"
+              value="{{misadministradores.direccion}}"  maxLength="100" required >
+            </div>
+
+            
+
+            <div class="form-group py-3">
+              <input type="text" id="txtCargo" name="txtCargo" class="form-control"
+              value="{{misadministradores.cargo}}"  maxLength="100" required >
+            </div>
+            
+            <div class="form-group py-2">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </form> <!-- formulario -->
+        </div>
+
+    <!-- fin la tarjeta card -->
+</div> <!-- columna -->
+
+</div> <!-- la fila -->
+
+
+{% endblock  %}
