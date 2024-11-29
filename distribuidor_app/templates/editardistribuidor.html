@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+<div class="col-md-4 offset-md-4">
+    <!-- la tarjeta card -->
+    <div class="card"><!-- tarjeta -->
+        <div class="card-body"> 
+          <form action="/editarDistribuidor/" method="POST"> {% csrf_token %}<!-- formulario -->
+            
+            <div class="form-group">
+              <input type="number" id="txtcodigo" name="txtcodigo" class="form-control"
+              value="{{misdistribuidores.id_distribuidor}}"  required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+              value="{{misdistribuidores.nombre}}"  maxLength="100" required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="number" id="txtcodigoproducto" name="txtcodigoproducto" class="form-control"
+              value="{{misdistribuidores.id_producto}}"  maxLength="300" required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="text" id="txtdescuento" name="txtdescuento" class="form-control"
+              value="{{misdistribuidores.descuento}}" required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="text" id="txtciudad_estado" name="txtciudad_estado" class="form-control"
+              value="{{misdistribuidores.ciudad_estado}}"  maxLength="50" required >
+            </div>
+
+            <div class="form-group py-3">
+              <label for="chkactivo">Activo: </label>
+              <input type="checkbox" id="chkactivo" name="chkactivo" class="form-check-input" {% if misdistribuidores.activo %} checked {% endif %} >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="text" id="txtdireccion" name="txtdireccion" class="form-control"
+              value="{{misdistribuidores.direccion}}"  maxLength="50" required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="number" id="numtelefono" name="numtelefono" class="form-control"
+              value="{{misdistribuidores.telefono}}"  maxLength="50" required >
+            </div>
+            
+            <div class="form-group py-2">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </form> <!-- formulario -->
+        </div>
+
+    <!-- fin la tarjeta card -->
+</div> <!-- columna -->
+
+</div> <!-- la fila -->
+
+
+{% endblock  %}

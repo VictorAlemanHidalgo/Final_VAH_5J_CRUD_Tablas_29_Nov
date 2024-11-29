@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+<div class="col-md-4 offset-md-4">
+    <!-- la tarjeta card -->
+    <div class="card"><!-- tarjeta -->
+        <div class="card-body"> 
+          <form action="/editarVenta/" method="POST"> {% csrf_token %}<!-- formulario -->
+            
+            <div class="form-group py-3">
+              <input type="number" id="txtcodigo" name="txtcodigo" class="form-control"
+              value="{{misventas.id_venta}}"  required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="number" id="numiduser" name="numiduser" class="form-control"
+              value="{{misventas.id_usuario}}"  required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="number" id="numidproducto" name="numidproducto" class="form-control"
+              value="{{misventas.id_producto}}"  required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="number" id="numidservicio" name="numidservicio" class="form-control"
+              value="{{misventas.id_servicio}}"  required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="number" id="numprecio" name="numprecio" class="form-control"
+              value="{{misventas.precio}}"  required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="text" id="txtestado" name="txtestado" class="form-control"
+              value="{{misventas.estado}}"  maxLength="100" required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="text" id="txtentrega" name="txtentrega" class="form-control"
+              value="{{misventas.entrega}}"  maxLength="300" required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="text" id="txtmetodopago" name="txtmetodopago" class="form-control"
+              value="{{misventas.metodo_pago}}" required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="text" id="txtdireccionenvio" name="txtdireccionenvio" class="form-control"
+              value="{{misventas.direccion_envio}}"  maxLength="50" required >
+            </div>
+            
+            <div class="form-group py-2">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </form> <!-- formulario -->
+        </div>
+
+    <!-- fin la tarjeta card -->
+</div> <!-- columna -->
+
+</div> <!-- la fila -->
+
+
+{% endblock  %}

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+    <div class="row"><!-- la fila -->
+
+        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!-- columna izquierda -->
+            <h1> Registrador</h1>
+            <div class="card"><!-- tarjeta -->
+              <div class="card-body"> 
+                <form action="/registrarDistribuidor/" method="POST"> {% csrf_token %}<!-- formulario -->
+
+                  <div class="form-group">
+                    <input type="number" id="txtcodigo" name="txtcodigo" class="form-control"
+                    placeholder="Codigo Distribuidor"  required >
+                  </div>
+
+                  <div class="form-group py-3">
+                    <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                    placeholder="Nombre Distribuidor"  maxLength="100" required >
+                  </div>
+
+                  <div class="form-group py-3">
+                    <input type="number" id="txtcodigoproducto" name="txtcodigoproducto" class="form-control"
+                    placeholder="Codigo Producto Distribuidor"   required >
+                  </div>
+
+                  <div class="form-group py-3">
+                    <input type="text" id="txtdescuento" name="txtdescuento" class="form-control"
+                    placeholder="Descuento Distribuidor" required >
+                  </div>
+
+                  <div class="form-group py-3">
+                    <input type="text" id="txtciudad_estado" name="txtciudad_estado" class="form-control"
+                    placeholder="Ciudad/Estado Distribuidor"  maxLength="50" required >
+                  </div>
+
+                  <div class="form-group py-3">
+                    <input type="text" id="txtdireccion" name="txtdireccion" class="form-control"
+                    placeholder="Direccion Distribuidor"  maxLength="50" required >
+                  </div>
+
+                  <div class="form-group py-3">
+                    <label for="chkactivo">Activo: </label>
+                    <input type="checkbox" id="chkactivo" name="chkactivo" class="form-check-input">
+                  </div>
+
+                  <div class="form-group py-3">
+                    <input type="number" id="numtelefono" name="numtelefono" class="form-control"
+                    placeholder="Telefono Distribuidor"  maxLength="50" required >
+                  </div>
+
+                  <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                  </div>
+
+                </form> <!-- formulario -->
+              </div>
+            </div><!-- tarjeta -->
+        </div><!-- columna izquierda -->
+        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!-- columna derecha -->
+          <img class="w-50" src="{% static 'img/distribuidoras.jpg' %}" width="400" height="400" alt="">
+            <h1>Listado de Distribuidores</h1>
+            <div class="table-responsive"><!-- tabla responsiva -->
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Id distribuidor</th>
+                        <th scope="col">nombre</th>
+                        <th scope="col">id producto</th>
+                        <th scope="col">descuento</th>
+                        <th scope="col">ciudad/estado</th>
+                        <th scope="col">direccion</th>
+                        <th scope="col">¿Activo?</th>
+                        <th scope="col">telefono</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for m in misdistribuidores %}
+                      <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{m.id_distribuidor}}</td>
+                        <td>{{m.nombre}}</td>
+                        <td>{{m.id_producto}}</td>
+                        <td>{{m.descuento}}</td>
+                        <td>{{m.ciudad_estado}}</td>
+                        <td>{{m.direccion}}</td>
+                        <td>{{m.activo}}</td>
+                        <td>+{{m.telefono}}</td>
+                        <td> <a href="seleccionarDistribuidor/{{m.id_distribuidor}}" class="btn btn-info" >Editar</a> </td> 
+                        <td> <a href="borrarDistribuidor/{{m.id_distribuidor}}" class="btn btn-danger" >Borrar</a> </td> 
+
+                      </tr>
+                      {% endfor %}
+                      
+                    </tbody>
+                  </table>
+            </div><!-- tabla responsiva -->
+        </div><!-- columna derecha -->
+
+    </div><!-- la fila-->
+{% endblock  %}
